@@ -1,0 +1,207 @@
+A HashMap in Java is a class within the java.util package that implements the Map interface, 
+storing data in key-value pairs using a hash table structure. 
+ It allows for constant-time average performance (O(1)) for basic operations like get() and put(),
+  provided the hash function disperses elements properly among the buckets. 
+
+Key characteristics include:
+
+Uniqueness: Keys must be unique; if a duplicate key is added, the new value overwrites the existing one. 
+Null Handling: It permits one null key and multiple null values. 
+Order: It does not guarantee any specific order of elements (neither insertion nor sorted order). 
+Thread Safety: It is unsynchronized, meaning it is not thread-safe;
+ concurrent access requires external synchronization or using Collections.synchronizedMap. 
+
+Basic Componenets of HashMap->
+Key - The identifier used to retrieve the value
+Value- The data associated with Key
+Bucket - A plave where key vlaue pairs are stored. Think of buvkets as cells in a list (array)
+Hash Function - Converts a key into an index (bucket location for storage).
+
+HASH FUNCTION - A hash function is an algorithem that takes an input (or "key") and return a fixed 
+size string of bytes, typically a numerical vlaue. The output is known as a hash code, hash value or simply hash.
+The primary purpose of a hash function is to map data of arbitary(any size) size to data of fixed size.
+
+Key points
+Deterministic - The same input will produce same output
+Fixed Output size - Regardless of the input size, the hash code has a consistent size (eg - 32 bit)
+Efficient Computation - The Hash function should computer the hash quickly
+
+
+Steps for Hashing the key->
+First, the key is passed through a hash function to generate a unique hash code (an integer number). This hash code
+helps determine where the key-value pair will be stored in the array (called a "bucket array").
+
+Calculating the index
+The hash code is then used to calclulate an index in the array(bucket location) usingint index = hashCode%arraySize;
+The index decides which  bucket will hold the key value pair.
+For ex, if the array size is 16, the key 's hash code will be divided by 16, and the remainder will be the index.
+
+3. Storing the bucket
+The key value is stored in the bucket at the calculated index. Each bucket can hold multiple key value pairs.
+(this is called collision handling mechanism).
+
+How hashing retrieves the data
+
+When we call get (key), the HashMap follows these steps.
+
+Hashig the Key - Similar to insertion, the key is hashed using the same hash function
+to calculate its hash code
+
+Finding the index- The hash code is used to find the index of the bucket where the key-value pair is stored.
+
+Searching in the Bucket - Once the correct bucket is found, it checks the key in that bucket. 
+If it finds the key, it returns the associated value.
+
+Time complexity-
+For the best time assuming that there are no collison and worked efficiently - O(1).
+If there are many collisions and many enteries are stored in the same bucket,
+the performance can degrade to O(n). where n is the number of elements in the brucket.
+But after java 8 if there are too many elements in a bucket, hashmap switches to a balanced tree
+ instead of alinked list to ensure better performance O(log n).
+
+ Common HashMap Methods in Java
+HashMap in Java provides a rich set of methods for key-value data manipulation. Key methods include:
+
+Basic Operations
+.put(K key, V value): Associates the specified value with the key. 
+.get(Object key): Returns the value for the specified key, or null if absent. 
+.remove(Object key): Removes the mapping for the specified key. 
+.containsKey(Object key): Checks if the map contains the specified key. 
+.containsValue(Object value): Checks if the map contains the specified value.
+.equals()- used for comparison 
+
+Utility Methods
+
+size(): Returns the number of key-value mappings. 
+isEmpty(): Returns true if the map contains no mappings. 
+clear(): Removes all entries from the map. 
+keySet(): Returns a Set view of the keys. 
+values(): Returns a Collection view of the values. 
+entrySet(): Returns a Set view of the key-value mappings.
+
+
+
+Advanced Methods (Java 8+)
+
+putIfAbsent(K key, V value): Puts value only if key is absent. 
+getOrDefault(Object key, V defaultValue): Returns value or default if key not found. 
+replace(K key, V value): Replaces value only if key exists. 
+forEach(BiConsumer action): Performs action on each entry.
+
+
+LiNKEDHASHMAP->
+
+LinkedHashMap in Java
+
+LinkedHashMap in Java implements the Map interface of the Collections Framework. It stores key-value pairs while maintaining the insertion order 
+of the entries. It maintains the order in which elements are added.
+
+Stores unique key-value pairs.
+Maintains insertion order.
+Allows one null key and multiple null values.
+It is not thread-safe; to synchronize it, use Collections.synchronizedMap().
+Declaration of LinkedHashMap
+public class LinkedHashMap<K,​V> extends HashMap<K,​V> implements Map<K,​V>
+
+Here, K is the key Object type and V is the value Object type
+
+K: The type of keys in the map.
+V: The type of values mapped in the map.
+
+
+
+lhm
+import java.util.LinkedHashMap;
+​
+public class Geeks{
+    
+    public static void main(String[] args){
+        
+        // Create a LinkedHashMap of Strings (keys) and Integers (values)
+        LinkedHashMap<String, Integer> lhm = new LinkedHashMap<>();
+        
+        // Adding key-value pairs
+        lhm.put("Apple", 50);
+        lhm.put("Banana", 30);
+        lhm.put("Mango", 70);
+        lhm.put("Orange", 40);
+        
+        // Displaying the LinkedHashMap
+        System.out.println("LinkedHashMap: " + lhm);
+    }
+}
+
+Output
+LinkedHashMap: {Apple=50, Banana=30, Mango=70, Orange=40}
+
+if function as lhm.get("Apple");
+lhm.get("Banana ");
+will be used, so Mango and Orange will be shown before in the output and Apple and Banana as the last because they were used recently.
+
+and new output will be
+
+LinkedHashMap: {Mango =70; Orange =40; Apple =50; Banana = 30}
+why this? because  it makes the retrieval of the elements which were used least to be deleted first.
+
+getOrDefault() - helps with getting the result of the person if it's in the list. as 
+integer res = hashMap.getOrDefault("get value", 0);
+In this get value is the value u wanna get and 0 is the default value.
+
+same method of hashmap are going to be used in the LinkedHashMap.
+
+->
+-Hashmap has not order for elements
+-LinkedHashMap maintains the order with refernce to the insertion
+-TreeHashMap ensure the element orders sequentially.
+
+
+SortedMap or TreeHashMap =>
+
+TreeMap in Java
+
+A TreeMap in Java is a part of the java.util package that implements the Map interface. 
+It stores key-value pairs in a sorted order using either a natural or custom comparator.
+
+TreeMap internally uses a Red-Black Tree for efficient sorting.
+Provides O(log n) time for insertion, deletion and lookup due to its self-balancing Red-Black Tree structure.
+TreeMap does not allow null keys, but allows null values.
+
+
+
+import java.util.Map;
+import java.util.TreeMap;
+​
+public class TreeMapCreation {
+    public static void main(String args[]){
+        
+        // Create a TreeMap of Strings (keys) and Integers
+        // (values)
+        TreeMap<String, Integer> tm = new TreeMap<>();
+​
+        System.out.println("TreeMap elements: " + tm);
+    }
+}
+
+Output
+TreeMap elements: {}
+
+Navigation and Range Operations
+firstKey() / lastKey(): Returns the smallest or largest key.
+
+headMap(K toKey): Returns entries with keys less than toKey. 
+
+tailMap(K fromKey): Returns entries with keys greater than or equal to fromKey. 
+
+subMap(K fromKey, K toKey): Returns entries within a key range. 
+
+ceilingKey(K key) / floorKey(K key): Returns the least key ≥ or greatest key ≤ the given key. 
+
+higherKey(K key) / lowerKey(K key): Returns the least key > or greatest key < the given key. 
+
+Views and Iteration
+keySet(): Returns a set of keys. 
+values(): Returns a collection of values. 
+entrySet(): Returns a set of key-value mappings. 
+descendingKeySet() / descendingMap(): Provides reverse-order views.
+
+Also every function from Hashmap

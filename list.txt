@@ -1,0 +1,119 @@
+Java List
+#Collection framework- Already made systems of classes and interfaces used to store, orgnize,
+and manage groups of data efficiently.
+instead of creating our own logic to handle multiple values java gives tools like 
+lists
+systems maps
+queues.
+
+List-
+A list inteface in java is a blueprint for collections that stores element in a ordered sequences.
+-Duplicacy allowed 
+
+common lists
+Arraylist
+linkedlist
+vector list
+
+keypoints
+1- ordered preservation
+2. Indez-based access
+3. Allows duplicates
+we gonna learn only 1 and 2 for now.
+
+1. Arraylist
+An Arraylist is a resizable array implimentations of the interface. 
+Unlike arrays in java, which have a fixed size, an ArrayList can change its size dynamically.
+This stores object rather than storing elements
+
+ex-
+import java.util.Arraylist;
+public class Main{
+    public static void main(String[] args){
+        ArrayList<integers> list = new ArrayList<>()//or we can use list instead of arraylist as it's the parent class.
+    list.add(1);
+    sout(list.get(index num));
+
+    list.add(index, element);//the previous value shifts
+    list.set(index, element); //the value getss replaced
+    list.remove();
+    list.contains(); shows if the element exists or not.
+    Collections.sort();//sorts the list itself
+    or list.sort(null);//null helps with the sorting.and in this condition is a Comparatable.
+
+    }
+}
+
+TIME COMPLEXITY- Time complexity is the number of operations needed to run an algorithm on large amounts of data.
+ And the number of operations can be considered as time because the computer uses some time for each operation.
+
+For example, in the algorithm that finds the lowest value in an array, each value in the array must be compared one time.
+ Every such comparison can be considered an operation, and each operation takes a certain amount of time. 
+ So the total time the algorithm needs to find the lowest value depends on the number of values in the array.
+
+The time it takes to find the lowest value is therefore linear with the number of values.
+ 100 values results in 100 comparisons, and 5000 values results in 5000 comparisons.
+
+
+LINKEDLIST ->
+
+LinkedList in Java
+
+LinkedList is a part of the Java Collections Framework and is present in the java.util package.
+ It implements a doubly linked list where elements are stored as nodes containing data and references
+  to the previous and next nodes, rather than in contiguous memory locations.
+
+The size of the LinkedList can grow or shrink dynamically at runtime.
+Maintains the order in which elements are inserted.
+Multiple duplicate elements can be stored.
+LinkedList is not thread-safe by default; it can be synchronized using Collections.synchronizedList().
+Provides better performance than ArrayList for insertion and deletion operations, especially at the beginning or middle.
+
+
+
+import java.util.LinkedList;
+​
+public class Node {
+​
+    public static void main(String[] args){
+        
+        // Creating a LinkedList
+        LinkedList<String> l = new LinkedList<String>();
+​
+        // Adding elements to the LinkedList using add() method
+        l.add("One");
+        l.add("Two");
+        l.add("Three");
+        l.add("Four");
+        l.add("Five");
+​
+        System.out.println(l);
+    }
+}
+
+-> Vector class
+Vector vs ArrayList in Java
+
+ArrayList and Vectors both implement the List interface, and both use (dynamically resizable) arrays for their internal data structure,
+ much like using an ordinary array. 
+
+Syntax:
+
+ArrayList: ArrayList<T> al = new ArrayList<T>();
+
+Vector: Vector<T> v = new Vector<T>(); 
+ArrayList Vs vector 
+S. No.	        ArrayList	Vector
+1.	ArrayList is not synchronized.	Vector is synchronized.
+2.	ArrayList increments 50% of the current array size if the number of elements exceeds ts capacity.
+	Vector increments 100% means doubles the array size if the total number of elements exceeds its capacity.
+3.	ArrayList is not a legacy class. It is introduced in JDK 1.2.
+	Vector is a legacy class.
+4.	ArrayList is fast because it is non-synchronized.	
+Vector is slow because it is synchronized, i.e., in a multithreading environment, it holds the other threads in a runnable or non-runnable state until the current thread releases the lock of the object.
+5.	ArrayList uses the Iterator interface to traverse the elements.	
+A Vector can use the Iterator interface or Enumeration interface to traverse the elements.
+6	ArrayList performance is high 
+	Vector performance is low 
+7	Multiple threads is allowed
+ 	only one threads are allowed .

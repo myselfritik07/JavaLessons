@@ -1,0 +1,148 @@
+This will be basically storing any doubt i get during learning and i learned it and stored here.
+
+Diff bw Interface and Abstract classes.
+
+Abstract class - An abstract class is a class that cannot be instantiated directtly 
+and is used as a base class for other classes.
+it can contain 
+Abstract methods 
+Normal method
+costructors
+variables
+
+ex. 
+class Dog extends Animal{
+    void sound(){
+        System.out.println("Dog barks");
+
+    }
+}
+public class main{
+    public static void main(String[] args){
+        Dog d = new Dog();
+        d.sound();
+        d.eat();
+    }
+}
+
+why abstract classes over the normal ones?
+1. prevents incomplete objects.
+2. Forces the methods of base class into the sub classes as well.
+3. Parital implimentation - can still write common codes.
+
+Interface->
+An interface is used to achieve 100% abstraction and define a contract that
+must follow.
+
+it has
+- abstract methods Already
+- default and static method
+- constants
+
+features
+-declared using interface
+- uses impliment keyword
+- support multiple inheritence
+
+example
+
+interface Animal{
+    void sound();
+}
+
+class Dog impliments Animal{
+    public void sound(){
+        System.out.println("Bark");
+    }
+}
+
+public static void main(String[] args){
+Animal a = new Dog();
+a.sound();
+}
+
+What are genrics in java?
+Java Generics
+Generics allow you to write classes, interfaces, and methods that work with different data types, 
+without having to specify the exact type in advance.
+
+This makes your code more flexible, reusable, and type-safe.
+
+Why Use Generics?
+Code Reusability: Write one class or method that works with different data types.
+Type Safety: Catch type errors at compile time instead of runtime.
+Cleaner Code: No need for casting when retrieving objects.
+
+inshort - it is basically used instead of data type.
+
+class Box<T> {
+  T value; // T is a placeholder for any data type
+
+  void set(T value) {
+    this.value = value;
+  }
+
+  T get() {
+    return value;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    // Create a Box to hold a String
+    Box<String> stringBox = new Box<>();
+    stringBox.set("Hello");
+    System.out.println("Value: " + stringBox.get());
+
+    // Create a Box to hold an Integer
+    Box<Integer> intBox = new Box<>();
+    intBox.set(50);
+    System.out.println("Value: " + intBox.get());
+  }
+}
+
+Difference between Capacity and size
+->Capacity - The capacity refers to the size of internal array that can hold elements before needing to resize. For arraylist it's 10.
+Size->specifies the wieghtage of the elment stored in it.
+
+Difference bw comparator and comparable
+Comparator - compares two objects.
+comparable - compares itself to the other objects.
+
+what is doubly linked list?
+A doubly linked list in Java is a linear data structure consisting of nodes where each node contains three components: data, 
+a next pointer referencing the subsequent node, and a previous pointer referencing the preceding node. 
+ Unlike a singly linked list which only allows forward traversal, 
+ this structure enables bidirectional traversal (both forward and backward) from any given node.
+
+
+What initialCapacity and loadFactor?
+
+ initialCapacity and loadFactor are parameters used in the constructors of Java collection classes like HashMap, HashSet, and Hashtable to
+  optimize memory usage and performance by pre-allocating space and controlling resizing behavior. 
+
+Initial Capacity: This defines the number of buckets (or slots) in the underlying hash table when the collection is created. 
+For example, new HashMap<>(16, 0.75f) starts with 16 buckets. If the expected number of elements is known, 
+setting this appropriately avoids the overhead of resizing the table later. Note that HashMap automatically rounds the
+ initial capacity up to the nearest power of two. 
+
+Load Factor:->This is a threshold ratio (defaulting to 0.75) that determines when the collection should resize. 
+ It represents the maximum percentage of buckets that can be filled before the table is expanded (typically doubled). 
+ For instance, with a capacity of 16 and a load factor of 0.75,
+ the collection will resize when the 13th element is added ($16 \times 0.75 = 12$, so exceeding 12 triggers a resize). 
+
+ Basically initial capacity determines the initial capacity for(initial space for the elements, usually 16byte) and
+ Load factor determines the resizing of that element tray for later work. (initial capacity * load factor(0.75));
+
+ What is Red Black Tree
+
+ A Red-Black Tree is a self-balancing binary search tree used in computer science to maintain efficient data storage and retrieval. 
+  It ensures fast operations—search, insertion, and deletion—in O(log n) time by enforcing structural constraints through node coloring. 
+
+  time complexity
+  
+  O(n)= number times. (number = total present values)
+  O(1) = achieving the desired result in first algorithem
+  O(log) = 
+
+What is Lambda expression?

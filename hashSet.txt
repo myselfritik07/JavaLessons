@@ -1,0 +1,58 @@
+HashSet in Java
+
+HashSet in Java implements the Set interface of the Collections Framework.
+
+ It is used to store the unique elements, and it doesn't maintain any specific order of elements.
+
+HashSet does not allow duplicate elements.
+Uses HashMap internally which is an implementation of hash table data structure.
+Also implements Serializable and Cloneable interfaces.
+HashSet is not thread-safe. To make it thread-safe, synchronization is needed externally.
+Does not support primitive types directly; requires wrapper classes (Integer, Character, etc.).
+
+
+
+import java.util.*;
+​
+class HashSet 
+{
+    public static void main(String[] args) 
+    {
+        // Instantiate an object of HashSet
+        HashSet<Integer> hs = new HashSet<>();//No repetition of elements but not sequenced as well.
+        HashSet<Integer>hs = new LinkedHashSet<>();//gives sequenced elements but on the sequence of insertion.
+        HashSet<Integer>hs = new TreSet<>();//Gives element in sequence totally.
+​
+        // Adding elements 
+        hs.add(1);
+        hs.add(2);
+        hs.add(1);
+​       
+    for (int i : hs){
+        system.out.println(i);//for inserting the elements in it.
+    }
+        System.out.println("HashSet Size: " + hs.size());
+        System.out.println("Elements in HashSet: " + hs);
+    }
+}
+
+Output
+HashSet Size: 2
+Elements in HashSet: [1, 2]//Extra element will either be removed or swaped with the new element.
+
+Time complexity
+Search - O(1);
+Insert - O(1);//Hence it's fast and more reliable.
+
+Now,as Map had it's impliments as -> HashMap,LinkedHashMap,TreeHashMap.
+Set also has it's impliment as -> HashSet, LinkedHashSet, TreeSet.
+
+As we know set is not thread safe and to do it we have to synchronize it externally. So to do that->
+
+Set <Integers> = Collections.syncrhonizedSet(hs);//it'll synchronize the set externally and will make the set thread safe.
+but as it's a manual one. we will be using another one with has a builtin thread Safety
+
+Also synchronized keyword will be used to do it manually.
+
+set<Integer> hs1 = new ConcurrentSkipListSet<>();
+used for SorterManner elements

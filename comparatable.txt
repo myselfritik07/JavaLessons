@@ -1,0 +1,35 @@
+Comparator - is an interface which helps in custom ordering.
+The Comparator interface in Java is used to define custom sorting logic for objects. 
+It belongs to java.util package allows sorting of objects of user-defined classes without modifying their source code.
+ It is especially useful when:
+
+We need multiple sorting strategies for a class.
+We want to keep sorting logic separate from the class definition.
+Comparator is a functional interface as it contains only one abstract method compare().
+
+import java.util.*;
+
+class Student {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+public class ComparatorExample {
+    public static void main(String[] args) {
+
+        ArrayList<Student> list = new ArrayList<>();
+        list.add(new Student(2, "Rahul"));
+        list.add(new Student(1, "Amit"));
+
+        Collections.sort(list, (s1, s2) -> Integer.compare(s1.id, s2.id));
+
+        for (Student s : list) {
+            System.out.println(s.id + " " + s.name);//sorts the object on the basis of name.  
+        }
+    }
+}
